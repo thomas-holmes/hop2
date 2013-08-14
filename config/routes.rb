@@ -6,6 +6,8 @@ Shorty::Application.routes.draw do
   # root 'welcome#index'
   root 'shortener#new'
 
+  resources :short_urls
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
