@@ -35,8 +35,14 @@ group :doc do
 end
 
 group :test do
+  gem 'cucumber'
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'phantomjs'
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'database_cleaner'
 end
 
 # Use ActiveModel has_secure_password
