@@ -8,6 +8,8 @@ Shorty::Application.routes.draw do
 
   resources :short_urls
 
+  get ':short_code' => 'short_urls#redirect', as: :short_code
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

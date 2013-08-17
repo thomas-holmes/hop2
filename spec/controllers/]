@@ -1,0 +1,16 @@
+require_relative '../spec_helper.rb'
+
+describe ShortUrlsController, type: :controller do
+  it 'can create a new ShortUrl' do
+    post :create, short_url: {url: "http://example.com"}
+  end
+
+  describe 'creating a new ShortUrl' do
+    let(:url) { ShortUrl.new(url: "http://example.com") }
+
+    it 'should render the result page' do
+      post :create, short_url: {url: url.url}
+      expect(response).to redirect_to(short_url_url(url)
+    end
+  end
+end
