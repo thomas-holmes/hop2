@@ -1,3 +1,5 @@
+require 'url_shortener'
+
 class ShortUrlsController < ApplicationController
   def new
     @url = ShortUrl.new
@@ -5,8 +7,18 @@ class ShortUrlsController < ApplicationController
 
   def create
     @url = ShortUrl.new(short_url_params(params))
-    @url.short_code = SecureRandom::urlsafe_base64(6)
-    if @url.save
+
+    short_code = UrlShortener.shorten @url.url, ShortUrl.where(url: @url.url)
+    existing = ShortUrl.find_by(short_code: short_code)
+
+    if existing.nil?
+      @url.short_code = short_code
+      @url.save
+    else
+      @url = existing
+    end
+
+    if @url.valid?
       redirect_to short_url_url @url.id
     else
       render :new
