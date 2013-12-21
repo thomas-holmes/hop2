@@ -1,4 +1,5 @@
 require 'url_shortener'
+require 'url_parser'
 
 class ShortUrlsController < ApplicationController
   def new
@@ -6,13 +7,17 @@ class ShortUrlsController < ApplicationController
   end
 
   def create
-    @url = ShortUrl.new(short_url_params(params))
+    url = UrlParser.parse(params[:short_url][:url])
 
-    short_code = UrlShortener.shorten @url.url, ShortUrl.where(url: @url.url)
+    short_code = UrlShortener.shorten(url) do |arg|
+      ShortUrl.where(url: arg)
+    end
+
+    @url = ShortUrl.new(url: url.to_s, short_code: short_code)
+
     existing = ShortUrl.find_by(short_code: short_code)
 
-    if existing.nil?
-      @url.short_code = short_code
+    if existing.blank?
       @url.save
     else
       @url = existing
@@ -23,6 +28,8 @@ class ShortUrlsController < ApplicationController
     else
       render :new
     end
+  rescue
+    render :new
   end
 
   def show

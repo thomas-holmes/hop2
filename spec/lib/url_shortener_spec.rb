@@ -1,25 +1,21 @@
 require_relative '../../lib/url_shortener'
+require 'uri'
 
 describe UrlShortener do
   describe '#shorten' do
-    let(:url) { 'http://example.com' }
+    let(:url) { URI('http://example.com') }
     it 'should return a short code for a given url' do
-      result = UrlShortener.shorten(url, [])
+      result = UrlShortener.shorten(url) do
+        []
+      end
       expect(result).to_not be_blank
     end
 
-    it 'should raise if a url is poorly formed' do
-      bad_uri = 'abc^^^'
-      expect { UrlShortener.shorten(bad_uri, []) }.to raise_error(UrlShortener::InvalidUrl)
-    end
-
-    it 'should raise if uri is not a url' do
-      bad_url = 'ftp://example.com'
-      expect { UrlShortener.shorten(bad_url, []) }.to raise_error(UrlShortener::InvalidUrl)
-    end
-
     it 'should return an existing short code if one already exists' do
-      result = UrlShortener.shorten(url, [{url: 'http://example.com', short_code: 'ShortCode'}])
+      existing_urls = [{url: 'http://example.com', short_code: 'ShortCode'}]
+      result = UrlShortener.shorten(url) do |url|
+        existing_urls.select { |u| u[:url] == url }
+      end
       expect(result).to eq('ShortCode')
     end
   end
