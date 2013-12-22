@@ -1,12 +1,12 @@
 <div id="submission-box" class="row">
   <div class="small-centered small-8 columns">
     <%= form_for @url, url: '/' do |f| %>
-      <div class="row">
+      <div class="row collapse">
         <div class="small-9 columns">
           <%= f.text_field :url, placeholder: "http://example.com" %>
         </div>
         <div class="small-3 columns">
-          <%= f.submit "Submit", class: "small button expand" %>
+          <%= f.submit "Submit", class: "button postfix" %>
         </div>
       </div>
     <% end %>
