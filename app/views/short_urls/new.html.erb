@@ -1,6 +1,6 @@
 <div id="submission-box" class="row">
   <div class="small-centered small-8 columns">
-    <%= form_for @url do |f| %>
+    <%= form_for @url, url: '/' do |f| %>
       <div class="row">
         <div class="small-9 columns">
           <%= f.text_field :url, placeholder: "http://example.com" %>
