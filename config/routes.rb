@@ -6,7 +6,9 @@ Shorty::Application.routes.draw do
   # root 'welcome#index'
   root 'short_urls#new'
 
-  resources :short_urls
+  resources :short_urls, only: [:show, :new, :create]
+
+  get 'short_urls' => 'short_urls#new'
 
   get ':short_code' => 'short_urls#redirect', as: :short_code
 

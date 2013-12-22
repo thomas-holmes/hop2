@@ -7,6 +7,8 @@ class ShortUrlsController < ApplicationController
   end
 
   def create
+    @url = ShortUrl.new(short_url_params)
+
     url = UrlParser.parse(params[:short_url][:url])
 
     short_code = UrlShortener.shorten(url) do |arg|
@@ -43,7 +45,7 @@ class ShortUrlsController < ApplicationController
   end
 
   private
-  def short_url_params(params)
+  def short_url_params
     params.require(:short_url).permit(:url)
   end
 end

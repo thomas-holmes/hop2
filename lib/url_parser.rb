@@ -31,6 +31,6 @@ class UrlParser
     end
   end
 
-  class InvalidUrl < Exception
+  class InvalidUrl < StandardError
   end
 end
