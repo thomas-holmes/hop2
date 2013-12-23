@@ -35,7 +35,7 @@
 // $total-columns: 12;
 
 // We use these to control various global styles
-$body-bg: #2c3e50;
+$body-bg: darken(#2c3e50, 10%);
 $body-font-color: #ecf0f1;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: normal;
@@ -51,7 +51,7 @@ $body-font-color: #ecf0f1;
 
 // We use these as default colors throughout
 // $primary-color: #008CBA;
-$primary-color: darken(#9b59b6, 10%);
+$primary-color: #c0392b;
 // $secondary-color: #e7e7e7;
 $secondary-color: #34495e;
 // $alert-color: #f04124;
@@ -65,6 +65,16 @@ $secondary-color: #34495e;
 // $shiny-edge-size: 0 1px 0;
 // $shiny-edge-color: rgba(#fff, .5);
 // $shiny-edge-active-color: rgba(#000, .2);
+
+// Header
+// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+// $header-font-weight: bold;
+// $header-font-style: normal;
+$header-font-color: #ecf0f1;
+// $header-line-height: 1.4;
+// $header-top-margin: .2rem;
+// $header-bottom-margin: .5rem;
+// $header-text-rendering: optimizeLegibility;
 
 // Media Query Ranges
 // $small-range: (0em, 40em);
