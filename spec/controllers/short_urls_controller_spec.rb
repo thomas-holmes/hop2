@@ -19,8 +19,24 @@ describe ShortUrlsController, type: :controller do
     let!(:url) { ShortUrl.create!(url: "http://example.com", short_code: "ABCDEFG", secret_code: "ABC123") }
 
     it 'should redirect to the original url' do
-      get :redirect, short_code: "ABCDEFG"
+      get :redirect, short_code: url.short_code
       expect(response).to redirect_to(url.url)
+    end
+
+    it 'should not redirect if url is disabled' do
+      url.update(disabled: true)
+      get :redirect, short_code: url.short_code
+      expect(response.status).to eq(404)
+    end
+  end
+
+  describe '#disable' do
+    let!(:url) { ShortUrl.create!(url: "http://example.com", short_code: "ABCDEFG", secret_code: "ABC123") }
+
+    it 'should disable ShortUrl' do
+      get :disable, secret_code: url.secret_code
+      url.reload
+      expect(url.disabled).to be_true
     end
   end
 end

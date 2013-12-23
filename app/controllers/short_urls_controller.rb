@@ -14,6 +14,7 @@ class ShortUrlsController < ApplicationController
                         short_code: SecureRandom::urlsafe_base64(4),
                         secret_code: SecureRandom::urlsafe_base64(8),
                        )
+
     if @url.save
       redirect_to short_url_url @url.secret_code
     else
@@ -30,7 +31,20 @@ class ShortUrlsController < ApplicationController
   def redirect
     code = params[:short_code]
     @url = ShortUrl.find_by!(short_code: code)
-    redirect_to @url.url
+
+    if @url.disabled
+      render 'errors/not_found', status: 404
+    else
+      redirect_to @url.url
+    end
+  end
+
+  def disable
+    @url = ShortUrl.find_by!(secret_code: params[:secret_code])
+    @url.disabled = true
+    @url.save
+
+    render :show
   end
 
   private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131223033407) do
+ActiveRecord::Schema.define(version: 20131223211221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20131223033407) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "secret_code"
+    t.boolean  "disabled"
   end
 
   add_index "short_urls", ["secret_code"], name: "index_short_urls_on_secret_code", unique: true, using: :btree

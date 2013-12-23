@@ -4,10 +4,8 @@ Then(/^I should be able to submit a url to shorten$/) do
 end
 
 When(/^I create a shortened url$/) do
-  visit root_url
-  @original_url = "http://example.com"
-  fill_in 'short_url_url', with: @original_url
-  click_on 'Submit'
+  @original_url = 'http://example.com'
+  create_shortened_url(@original_url)
 end
 
 When(/^visit the shortened url$/) do
