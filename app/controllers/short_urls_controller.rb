@@ -1,4 +1,3 @@
-require 'url_shortener'
 require 'url_parser'
 
 class ShortUrlsController < ApplicationController
@@ -11,21 +10,12 @@ class ShortUrlsController < ApplicationController
 
     url = UrlParser.parse(params[:short_url][:url])
 
-    short_code = UrlShortener.shorten(url) do |arg|
-      ShortUrl.where(url: arg)
-    end
+    short_code = SecureRandom::urlsafe_base64 4
 
     @url = ShortUrl.new(url: url.to_s, short_code: short_code)
 
-    existing = ShortUrl.find_by(short_code: short_code)
 
-    if existing.blank?
-      @url.save
-    else
-      @url = existing
-    end
-
-    if @url.valid?
+    if @url.save
       redirect_to short_url_url @url.id
     else
       render :new

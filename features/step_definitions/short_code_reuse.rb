@@ -9,8 +9,8 @@ When(/^create another shortened url for the same url$/) do
   @second_url = page.find('#short_url')[:href]
 end
 
-Then(/^both shortened urls should match$/) do
-  expect(@first_url).to eq(@second_url)
+Then(/^both shortened urls should not match$/) do
+  expect(@first_url).to_not eq(@second_url)
 end
 
 def create_shortened_url(url)
