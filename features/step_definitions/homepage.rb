@@ -3,6 +3,6 @@ When(/^I visit the homepage$/) do
 end
 
 Then(/^it should load$/) do
-  expect(title).to eq("Shorty")
+  expect(title).to eq("hop2")
 end
 
