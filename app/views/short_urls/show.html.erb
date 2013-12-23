@@ -8,7 +8,7 @@
     <h2><%= link_to short_code_url(@url.short_code), short_code_url(@url.short_code), id: "short_url"%></h2>
   </div>
   <%= form_for @url, url: { action: "disable", secret_code: @url.secret_code }, method: "POST" do |f| %>
-    <%= f.submit "Disable", id: "disable_url", class: "button small"%>
+    <%= f.submit @url.disabled? ? "Disabled" : "Disable", id: "disable_url", class: "button small", disabled: @url.disabled %>
   <% end %>
 </div>
 <br>
