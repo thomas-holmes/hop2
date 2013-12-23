@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? "Shorty - #{yield(:title)}" : "Shorty" %></title>
+    <title><%= content_for?(:title) ? "hop2 - #{yield(:title)}" : "hop2" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -13,7 +13,7 @@
 
   <body>
 
-    <h1 class="centered" id="title">Shorty</h1>
+    <h1 class="centered" id="title">hop<sup>2</sup></h1>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>
