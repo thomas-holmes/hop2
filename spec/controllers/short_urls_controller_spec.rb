@@ -11,12 +11,12 @@ describe ShortUrlsController, type: :controller do
     it 'should render the result page' do
       post :create, short_url: {url: url.url}
       show_url = assigns(:url)
-      expect(response).to redirect_to short_url_url show_url
+      expect(response).to redirect_to short_url_url(show_url.secret_code)
     end
   end
 
   describe '#redirect' do
-    let!(:url) { ShortUrl.create!(url: "http://example.com", short_code: "ABCDEFG") }
+    let!(:url) { ShortUrl.create!(url: "http://example.com", short_code: "ABCDEFG", secret_code: "ABC123") }
 
     it 'should redirect to the original url' do
       get :redirect, short_code: "ABCDEFG"

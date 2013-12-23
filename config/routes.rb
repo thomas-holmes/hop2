@@ -8,9 +8,11 @@ Hop2::Application.routes.draw do
 
   post '/' => 'short_urls#create'
 
-  resources :short_urls, only: [:show]
+  get 'short_urls/:secret_code' => 'short_urls#show', as: :short_url
 
   get 'short_urls' => 'short_urls#new'
+
+  get 'short_urls/:secret_code/disable' => 'short_urls#disable'
 
   get ':short_code' => 'short_urls#redirect', as: :short_code
 

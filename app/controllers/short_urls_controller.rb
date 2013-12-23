@@ -10,13 +10,12 @@ class ShortUrlsController < ApplicationController
 
     url = UrlParser.parse(params[:short_url][:url])
 
-    short_code = SecureRandom::urlsafe_base64 4
-
-    @url = ShortUrl.new(url: url.to_s, short_code: short_code)
-
-
+    @url = ShortUrl.new(url: url.to_s,
+                        short_code: SecureRandom::urlsafe_base64(4),
+                        secret_code: SecureRandom::urlsafe_base64(8),
+                       )
     if @url.save
-      redirect_to short_url_url @url.id
+      redirect_to short_url_url @url.secret_code
     else
       render :new
     end
@@ -25,7 +24,7 @@ class ShortUrlsController < ApplicationController
   end
 
   def show
-    @url = ShortUrl.find params[:id]
+    @url = ShortUrl.find_by!(secret_code: params[:secret_code])
   end
 
   def redirect
