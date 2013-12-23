@@ -14,6 +14,10 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require modernizr
+//= require modernizr/contenteditable
+//= require modernizr/cors
+//= require modernizr/emoji
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
