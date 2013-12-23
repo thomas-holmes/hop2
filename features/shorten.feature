@@ -1,5 +1,5 @@
 Feature: In order to more easily link web content I wish to use
-  Shorty to create abbreviated links that redirect to the
+  hop2 to create abbreviated links that redirect to the
   desired content
 
   Scenario: The user should be able to submit a url to shorten

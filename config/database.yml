@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  database: dev_shorty
+  database: dev_hop2
   pool: 5
   timeout: 5000
 
@@ -9,13 +9,13 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   adapter: postgresql
-  database: test_shorty
+  database: test_hop2
   pool: 5
   timeout: 5000
 
 production:
   adapter: postgresql
-  database: prod_shorty
+  database: prod_hop2
   pool: 5
   timeout: 5000
 

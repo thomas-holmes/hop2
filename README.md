@@ -1,4 +1,4 @@
-Shorty
+hop2
 ======
 
-Shorty is a URL shortener service
+hop2 is a URL shortener service

@@ -1,4 +1,4 @@
-Feature: Shorty homepage loads
-  Scenario: Load shorty homepage
+Feature: hop2 homepage loads
+  Scenario: Load hop2 homepage
     When I visit the homepage
     Then it should load
