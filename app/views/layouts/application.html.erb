@@ -11,6 +11,20 @@
   </head>
 
   <body>
+    <nav class='top-bar' data-topbar>
+      <ul class='title-area'>
+        <li class='name'>
+          <h1><a href='#'>hop<sup>2</sup></a></h1>
+        </li>
+      </ul>
+
+      <section class='top-bar-section'>
+        <ul class='right'>
+          <li class='<%= 'active' if content_for(:sign_in) %>'><%= link_to 'Sign in', new_user_session_path %></li>
+          <li class='<%= 'active' if content_for(:sign_up) %>'><%= link_to 'Sign up', new_user_registration_path %></li>
+        </ul>
+      </section>
+    </nav>
 
     <h1 class="centered" id="title">hop<sup>2</sup></h1>
     <%= yield %>
