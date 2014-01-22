@@ -1,0 +1,9 @@
+<h2><%= @user.email %></h2>
+
+<h3>Shortened Urls</h3>
+<ul>
+  <% @user.short_urls.each do |u| %>
+    <li>u.url</li>
+  <% end %>
+</ul>
+
