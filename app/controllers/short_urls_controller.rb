@@ -15,6 +15,8 @@ class ShortUrlsController < ApplicationController
                         secret_code: SecureRandom::urlsafe_base64(8),
                        )
 
+    @url.user = current_user
+
     if @url.save
       redirect_to short_url_url @url.secret_code
     else

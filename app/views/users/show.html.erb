@@ -3,7 +3,7 @@
 <h3>Shortened Urls</h3>
 <ul>
   <% @user.short_urls.each do |u| %>
-    <li>u.url</li>
+    <li><%= u.url %></li>
   <% end %>
 </ul>
 

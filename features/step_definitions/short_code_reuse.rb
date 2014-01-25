@@ -12,9 +12,3 @@ end
 Then(/^both shortened urls should not match$/) do
   expect(@first_url).to_not eq(@second_url)
 end
-
-def create_shortened_url(url)
-  visit root_url
-  fill_in 'short_url_url', with: url
-  click_on 'Submit'
-end
