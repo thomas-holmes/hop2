@@ -31,13 +31,17 @@
       </section>
     </nav>
 
+    <div class="flash">
+      <% if flash[:notice] %>
+        <p class="alert-box notice"><%= notice %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p class="alert-box alert"><%= alert %></p>
+      <% end %>
+    </div>
     <div class='row'>
       <%= yield %>
     </div>
     <%= javascript_include_tag "application" %>
-    <div class="flash">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
   </body>
 </html>
