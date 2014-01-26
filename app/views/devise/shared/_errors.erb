@@ -1,0 +1,5 @@
+<% if resource.errors[key].any? %>
+  <% resource.errors[key].each do |e| %>
+    <small class='error'><%= e %></small>
+  <% end %>
+<% end %>
