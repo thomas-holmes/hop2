@@ -31,8 +31,9 @@
       </section>
     </nav>
 
-    <h1 class="centered" id="title">hop<sup>2</sup></h1>
-    <%= yield %>
+    <div class='row'>
+      <%= yield %>
+    </div>
     <%= javascript_include_tag "application" %>
     <div class="flash">
       <p class="notice"><%= notice %></p>
