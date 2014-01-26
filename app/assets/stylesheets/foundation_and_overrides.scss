@@ -344,7 +344,7 @@ $button-disabled-opacity: 0.45;
 // $form-label-pointer: pointer;
 // $form-label-font-size: rem-calc(14);
 // $form-label-font-weight: normal;
-// $form-label-font-color: lighten(#000, 30%);
+$form-label-font-color: $body-font-color;
 // $form-label-bottom-margin: rem-calc(8);
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
