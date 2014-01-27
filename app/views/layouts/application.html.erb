@@ -32,11 +32,8 @@
     </nav>
 
     <div class="flash">
-      <% if flash[:notice] %>
-        <p class="alert-box notice"><%= notice %></p>
-      <% end %>
-      <% if flash[:alert] %>
-        <p class="alert-box alert"><%= alert %></p>
+      <% flash.each do |level, text| %>
+        <p class="alert-box <%= level %>"><%= text %></p>
       <% end %>
     </div>
     <div class='row'>
