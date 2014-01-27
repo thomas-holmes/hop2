@@ -43,6 +43,12 @@ describe ShortUrlsController, type: :controller do
       get :redirect, short_code: url.short_code
       expect(response.status).to eq(404)
     end
+
+    it 'should create a `Click` when redirecting' do
+      get :redirect, short_code: url.short_code
+      url.reload
+      expect(url).to have(1).clicks
+    end
   end
 
   describe '#disable' do

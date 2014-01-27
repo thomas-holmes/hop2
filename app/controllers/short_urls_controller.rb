@@ -37,6 +37,7 @@ class ShortUrlsController < ApplicationController
     if @url.disabled
       render 'errors/not_found', status: 404
     else
+      @url.clicks.create!
       redirect_to @url.url
     end
   end
