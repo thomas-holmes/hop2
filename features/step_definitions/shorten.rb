@@ -16,3 +16,7 @@ end
 Then(/^I should be redirected to the original url$/) do
   expect(URI.parse current_url).to eq(URI.parse @original_url)
 end
+
+Given(/^have a shortened url$/) do
+  @short_url = @current_user.short_urls.create!(url: 'http://example.com', short_code: "ABCD123", secret_code: "A124298DKL")
+end
