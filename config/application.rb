@@ -21,5 +21,11 @@ module Hop2
     # config.i18n.default_locale = :de
 
     config.autoload_paths += Dir["#{config.root}/lib/**"]
+
+    config.generators do |g|
+        g.test_framework  :rspec, :fixture => false
+        g.view_specs      false
+        g.helper_specs    false
+    end
   end
 end
