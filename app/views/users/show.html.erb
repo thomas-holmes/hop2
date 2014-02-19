@@ -3,7 +3,10 @@
 <h3>Shortened Urls</h3>
 <ul>
   <% @user.short_urls.each do |u| %>
-    <li><%= u.url %> - <%= link_to u.short_code, short_code_path(u.short_code) %></li>
+    <li id="url-<%= u.short_code %>">
+      <span><%= u.url %> - <%= link_to u.short_code, short_code_path(u.short_code) %><span>
+      <span id="clicks-<%= u.short_code %>"><%= u.clicks.count %></span>
+    </li>
   <% end %>
 </ul>
 
