@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe ShortUrl do
   describe 'validation' do
-    let(:short_url) { ShortUrl.new({short_code: 'ABC123', url: 'http://example.com', secret_code: 'ABC123DEF' }) }
+    let(:short_url) { FactoryGirl.build(:short_url, short_code: 'ABC123', url: 'http://example.com', secret_code: 'ABC123DEF' ) }
 
     context 'short_code' do
       it 'must be present' do
@@ -11,7 +11,7 @@ describe ShortUrl do
       end
 
       it 'must be unique' do
-        ShortUrl.create({short_code: 'ABC123', url: 'http://example.com', secret_code: 'HIJKLMNOPQ'})
+        FactoryGirl.create(:short_url, short_code: 'ABC123', url: 'http://example.com', secret_code: 'HIJKLMNOPQ')
         expect(short_url).to_not be_valid
       end
     end
@@ -23,7 +23,7 @@ describe ShortUrl do
       end
 
       it 'must be unique' do
-        ShortUrl.create({short_code: 'ABC123X', url: 'http://example.com', secret_code: 'ABC123DEF'})
+        FactoryGirl.create(:short_url, short_code: 'ABC123X', url: 'http://example.com', secret_code: 'ABC123DEF')
         expect(short_url).to_not be_valid
       end
     end
