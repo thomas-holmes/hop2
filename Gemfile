@@ -37,6 +37,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'letter_opener'
+end
+
 group :test do
   gem 'cucumber'
   gem 'cucumber-rails', require: false
