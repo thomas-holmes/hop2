@@ -37,6 +37,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :production do
+  gem 'newrelic_rpm'
+end
+
 group :development do
   gem 'letter_opener'
 end
