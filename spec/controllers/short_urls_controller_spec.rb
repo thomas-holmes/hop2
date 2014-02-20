@@ -17,7 +17,7 @@ describe ShortUrlsController, type: :controller do
     end
 
     context 'logged in user' do
-      let(:user) { User.create!(email: 'test@example.com', password: 'password', password_confirmation: 'password') }
+      let(:user) { FactoryGirl.create(:user) }
       before(:each) do
         sign_in(user)
       end
