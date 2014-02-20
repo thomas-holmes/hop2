@@ -13,7 +13,7 @@ def register_account
 end
 
 def create_account
-  User.create!(email: 'test@example.com', password: 'password', password_confirmation: 'password')
+  FactoryGirl.create(:user)
 end
 
 def as_a_signed_in_user
