@@ -6,7 +6,7 @@ describe ShortUrlsController, type: :controller do
   end
 
   describe '#create' do
-    let(:url) { ShortUrl.new(url: "http://example.com") }
+    let(:url) { FactoryGirl.build(:short_url, url: "http://example.com") }
 
     context 'no logged in user' do
       it 'should render the result page' do
@@ -17,7 +17,7 @@ describe ShortUrlsController, type: :controller do
     end
 
     context 'logged in user' do
-      let(:user) { User.create!(email: 'test@example.com', password: 'password', password_confirmation: 'password') }
+      let(:user) { FactoryGirl.create(:user) }
       before(:each) do
         sign_in(user)
       end
@@ -31,7 +31,7 @@ describe ShortUrlsController, type: :controller do
   end
 
   describe '#redirect' do
-    let!(:url) { ShortUrl.create!(url: "http://example.com", short_code: "ABCDEFG", secret_code: "ABC123") }
+    let!(:url) { FactoryGirl.create(:short_url, url: "http://example.com", short_code: "ABCDEFG", secret_code: "ABC123") }
 
     it 'should redirect to the original url' do
       get :redirect, short_code: url.short_code
@@ -52,7 +52,7 @@ describe ShortUrlsController, type: :controller do
   end
 
   describe '#disable' do
-    let!(:url) { ShortUrl.create!(url: "http://example.com", short_code: "ABCDEFG", secret_code: "ABC123") }
+    let!(:url) { FactoryGirl.create(:short_url) }
 
     it 'should disable ShortUrl' do
       get :disable, secret_code: url.secret_code
